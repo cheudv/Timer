@@ -1,0 +1,46 @@
+{
+  "name": "shilu-timer",
+  "version": "1.2.3",
+  "description": "时录 · 计时统计",
+  "main": "main.js",
+  "author": "时录",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.shilu.timer",
+    "productName": "时录",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "server.js",
+      "index.html",
+      "style.css",
+      "app.js",
+      "charts.js",
+      "vendor/sortable.min.js",
+      "build/icon.png",
+      "fonts/**"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "时录-portable.${ext}"
+    },
+    "portable": {
+      "artifactName": "时录-portable.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}
