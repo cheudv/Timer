@@ -1676,3 +1676,138 @@ html.theme-lotus .boards::-webkit-scrollbar-thumb { background: rgba(127, 216, 1
 @media (prefers-reduced-motion: reduce) {
   html.theme-lotus .board-name::after { animation: none; }
 }
+
+/* ---------- 限定主题：玫瑰花丛（全元素重设计） ---------- */
+html.theme-rose body {
+  background-image:
+    radial-gradient(ellipse at 80% 22%, rgba(255, 140, 170, 0.12), transparent 44%),
+    radial-gradient(ellipse at 50% 116%, rgba(255, 190, 210, 0.12), transparent 60%),
+    radial-gradient(ellipse at 18% 96%, rgba(159, 230, 192, 0.08), transparent 50%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+html.theme-rose body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 116%, rgba(255, 150, 180, 0.1), transparent 56%),
+    linear-gradient(180deg, rgba(255, 240, 245, 0.02), rgba(20, 8, 16, 0.06));
+}
+
+html.theme-rose .aurora { display: none; }
+
+html.theme-rose .topbar {
+  background: rgba(34, 14, 24, 0.72);
+  border-bottom-color: rgba(255, 150, 180, 0.16);
+}
+
+html.theme-rose .chart-card,
+html.theme-rose .stat-card,
+html.theme-rose .timer-panel,
+html.theme-rose .empty-board,
+html.theme-rose .modal {
+  border-color: rgba(255, 150, 180, 0.22);
+  box-shadow: 0 26px 60px -28px rgba(20, 8, 16, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+html.theme-rose .vs-btn.active {
+  background: linear-gradient(135deg, rgba(255, 127, 163, 0.28), rgba(255, 190, 210, 0.18));
+  box-shadow: inset 0 0 0 1px rgba(255, 127, 163, 0.45);
+  color: #ffe6ee;
+}
+
+html.theme-rose .board-chip:hover { border-color: rgba(255, 127, 163, 0.5); }
+
+html.theme-rose .board-chip.active {
+  background: linear-gradient(135deg, rgba(255, 127, 163, 0.26), rgba(159, 230, 192, 0.16));
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 127, 163, 0.5), 0 10px 26px -12px rgba(255, 127, 163, 0.45);
+}
+
+html.theme-rose .board-add { color: var(--primary); border-color: rgba(255, 127, 163, 0.5); }
+
+html.theme-rose .board-name {
+  font-family: var(--font-serif);
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  color: #ffe6ee;
+  text-shadow: 0 0 16px rgba(255, 127, 163, 0.45);
+}
+
+html.theme-rose .board-name::before {
+  content: '❀';
+  color: rgba(255, 150, 180, 0.9);
+  font-weight: 400;
+  margin-right: 6px;
+  text-shadow: 0 0 12px rgba(255, 127, 163, 0.6);
+}
+
+html.theme-rose .time {
+  font-weight: 600;
+  color: #fff0f4;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(255, 127, 163, 0.78), 0 0 34px rgba(255, 127, 163, 0.36);
+}
+
+html.theme-rose .btn-start {
+  background: linear-gradient(160deg, #ff8fb0, #e64f78);
+  color: #3a0f1d;
+  box-shadow: 0 18px 44px -14px rgba(230, 79, 120, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 26px rgba(255, 127, 163, 0.12);
+}
+
+html.theme-rose .btn-start:hover {
+  box-shadow: 0 22px 52px -14px rgba(230, 79, 120, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 36px rgba(255, 127, 163, 0.16);
+}
+
+html.theme-rose .btn-start.running {
+  background: linear-gradient(160deg, #9fe6c0, #4fae86);
+  color: #06281c;
+  box-shadow: 0 18px 44px -14px rgba(79, 174, 134, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+html.theme-rose .btn-ghost:hover { border-color: rgba(255, 127, 163, 0.45); }
+
+html.theme-rose .mng-name:focus,
+html.theme-rose #add-name:focus,
+html.theme-rose .theme-board-select:focus {
+  border-color: var(--primary);
+  background: var(--field-bg-focus);
+  box-shadow: 0 0 0 3px rgba(255, 127, 163, 0.16), 0 0 20px rgba(255, 127, 163, 0.25);
+}
+
+html.theme-rose .panel-total strong,
+html.theme-rose .sc-value,
+html.theme-rose .pts-val { text-shadow: 0 0 12px rgba(255, 127, 163, 0.4); }
+
+html.theme-rose .status-dot { background: #5a2a3e; }
+html.theme-rose .status-dot.live { background: var(--primary); }
+
+html.theme-rose .cal-title { color: var(--primary); text-shadow: 0 0 10px rgba(255, 127, 163, 0.35); }
+html.theme-rose .cal-nav:hover { border-color: rgba(255, 127, 163, 0.5); }
+
+html.theme-rose .cal-day.done { background: rgba(255, 190, 210, 0.16); }
+html.theme-rose .cal-day.sel { background: rgba(255, 127, 163, 0.2); border-color: var(--primary); }
+
+html.theme-rose .theme-card { border-color: rgba(255, 190, 210, 0.24); }
+
+html.theme-rose .theme-preview-bar { border-color: rgba(255, 127, 163, 0.5); }
+
+html.theme-rose .toast { border-color: rgba(255, 127, 163, 0.5); box-shadow: 0 0 30px rgba(255, 127, 163, 0.16); }
+
+html.theme-rose .swatch { border-radius: 10px; }
+html.theme-rose .swatch.active { border-color: var(--primary); box-shadow: 0 0 10px rgba(255, 127, 163, 0.5); }
+
+html.theme-rose .fps-picker,
+html.theme-rose .fps-opt { border-radius: 10px; }
+
+html.theme-rose .boards { scrollbar-color: rgba(255, 127, 163, 0.5) transparent; }
+html.theme-rose .boards::-webkit-scrollbar-thumb { background: rgba(255, 127, 163, 0.45); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-rose .board-name::before { text-shadow: none; }
+}

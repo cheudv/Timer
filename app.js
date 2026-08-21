@@ -320,6 +320,35 @@
         glow: ['168,208,255', '196,190,255', '255,205,222'],
         meteor: '216,235,255'
       }
+    },
+    rose: {
+      vars: {
+        '--bg0': '#2a0e1a', '--bg1': '#3e1628',
+        '--card': 'rgba(74,28,48,0.42)', '--card-soft': 'rgba(255,255,255,0.045)',
+        '--line': 'rgba(255,140,170,0.16)', '--line-soft': 'rgba(255,140,170,0.1)',
+        '--bord': 'rgba(255,150,180,0.18)', '--bord-strong': 'rgba(255,150,180,0.4)',
+        '--field-bg': 'rgba(30,12,22,0.7)', '--field-bg-focus': 'rgba(30,12,22,0.9)',
+        '--modal-bg': 'rgba(58,24,40,0.95)',
+        '--ink': '#fff2f5', '--ink-soft': '#e7bccb', '--muted': '#a87e8e',
+        '--primary': '#ff7fa3', '--primary-deep': '#e64f78', '--primary-soft': 'rgba(255,127,163,0.16)',
+        '--stop': '#ff7d9d', '--stop-deep': '#f55c84', '--stop-soft': 'rgba(255,125,157,0.16)',
+        '--lav': '#ffb0c8', '--cyan': '#9fe6c0', '--pink': '#ff9ec7',
+        '--btn-top': '#ff8fb0', '--btn-bot': '#e64f78', '--btn-ink': '#3a0f1d',
+        '--acc-a': '255,140,170', '--acc-b': '255,190,210', '--prim-a': '255,127,163',
+        '--halo-a': '255,230,238', '--halo-b': '255,140,170', '--halo-c': '255,190,210',
+        '--aurora1': '#5a1f3a', '--aurora2': '#8a2f5c', '--aurora3': '#3f5a3a',
+        '--focus': 'rgba(255,140,170,0.6)',
+        '--c-axis': '#4a2034', '--c-txt': '#b38093',
+        '--c-bar': '#ff9ebc', '--c-bar-hi': '#ffd0e0',
+        '--c-line': '#ff7fa3', '--c-line-hi': '#ffb0c8',
+        '--c-total': '#9fe6c0', '--c-total-hi': '#cdf3da',
+        '--font-serif': '"Noto Serif SC", "Songti SC", STSong, "SimSun", serif'
+      },
+      star: {
+        stars: ['255,255,255', '255,170,200', '255,205,222', '159,230,192'],
+        glow: ['255,195,220', '255,215,232', '159,230,192'],
+        meteor: '255,225,238'
+      }
     }
   };
 
@@ -389,6 +418,12 @@
       meteors: false,
       species: { rain: 70, lotus: 3, pad: 9, ripple: 9 },
       colors: { a: '168,208,255', b: '196,190,255', c: '255,170,205' }
+    },
+    rose: {
+      back: 'garden',
+      meteors: false,
+      species: { rose: 12, rosepetal: 22, leaf: 10, star: 24 },
+      colors: { a: '255,140,170', b: '255,190,210', c: '159,230,192' }
     }
   };
 
@@ -485,6 +520,12 @@
       desc: '烟雨荷塘：绵绵细雨敲开水面的涟漪，荷花在碧波间摇曳，禅意与宁静交织。',
       cost: THEME_COST,
       accent: '#f2a7c3'
+    },
+    rose: {
+      name: '玫瑰花丛',
+      desc: '暮色玫瑰花丛：层叠盛放的玫瑰在微风里轻摇，花瓣与绿叶缓缓飘落，浪漫与温柔交织。',
+      cost: THEME_COST,
+      accent: '#ff7fa3'
     }
   };
 
@@ -865,6 +906,47 @@
         p.x = Math.random() * W;
         p.y = H * (0.7 + Math.random() * 0.28);
         p.color = pick([s.colors.a, s.colors.b]);
+      } else if (type === 'rose') {
+        p.r = Math.random() * 14 + 18;
+        p.x = Math.random() * W;
+        p.y = H * (0.56 + Math.random() * 0.4);
+        p.vx = (Math.random() - 0.5) * 0.16;
+        p.sway = Math.random() * 0.8 + 0.4;
+        p.base = Math.random() * 0.16 + 0.62;
+        p.amp = Math.random() * 0.1;
+        p.speed = Math.random() * 1.1 + 0.6;
+        p.phase = Math.random() * 6.28;
+        p.rot = Math.random() * 6.28;
+        p.baseRot = p.rot;
+        p.red = Math.random() < 0.42;
+        p.layers = 4;
+      } else if (type === 'rosepetal') {
+        p.r = Math.random() * 3.4 + 2.6;
+        p.x = Math.random() * W;
+        p.y = -p.r * 2 - Math.random() * H;
+        p.vy = Math.random() * 0.55 + 0.4;
+        p.sway = Math.random() * 0.9 + 0.45;
+        p.vrot = (Math.random() - 0.5) * 0.04;
+        p.base = Math.random() * 0.2 + 0.6;
+        p.amp = Math.random() * 0.18;
+        p.speed = Math.random() * 1.4 + 0.7;
+        p.phase = Math.random() * 6.28;
+        p.rot = Math.random() * 6.28;
+        p.color = Math.random() < 0.3 ? s.colors.b : pick([s.colors.a, s.colors.b]);
+      } else if (type === 'leaf') {
+        p.r = Math.random() * 5 + 4;
+        p.x = Math.random() * W;
+        p.y = Math.random() * H;
+        p.vx = (Math.random() - 0.5) * 0.5 - 0.15;
+        p.vy = Math.random() * 0.35 + 0.18;
+        p.sway = Math.random() * 0.7 + 0.35;
+        p.vrot = (Math.random() - 0.5) * 0.03;
+        p.base = Math.random() * 0.2 + 0.4;
+        p.amp = Math.random() * 0.2;
+        p.speed = Math.random() * 1.3 + 0.6;
+        p.phase = Math.random() * 6.28;
+        p.rot = Math.random() * 6.28;
+        p.g = Math.random() < 0.5 ? '120,186,134' : '96,168,118';
       }
       return p;
     }
@@ -963,6 +1045,25 @@
       } else if (p.type === 'ripple') {
         p.r += p.sway;
         if (p.r > 92) { p.r = 4; p.x = Math.random() * W; p.y = H * (0.7 + Math.random() * 0.28); p.phase = Math.random() * 6.28; }
+      } else if (p.type === 'rose') {
+        p.x += p.vx;
+        p.y += Math.sin(t / 2600 + p.phase) * 0.16;
+        p.rot = p.baseRot + Math.sin(t / 5200 + p.phase) * 0.05;
+        if (p.x < -p.r * 2) { p.x = W + p.r * 2; p.y = H * (0.56 + Math.random() * 0.4); }
+        if (p.x > W + p.r * 2) { p.x = -p.r * 2; p.y = H * (0.56 + Math.random() * 0.4); }
+      } else if (p.type === 'rosepetal') {
+        p.y += p.vy;
+        p.x += Math.sin(t / 800 + p.phase) * p.sway;
+        p.rot += p.vrot;
+        if (p.y > H + 14) { p.y = -14; p.x = Math.random() * W; p.rot = Math.random() * 6.28; }
+      } else if (p.type === 'leaf') {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.x += Math.sin(t / 900 + p.phase) * p.sway * 0.3;
+        p.rot += p.vrot;
+        if (p.y > H + 14) { p.y = -14; p.x = Math.random() * W; }
+        if (p.x < -14) { p.x = W + 14; }
+        if (p.x > W + 14) { p.x = -14; }
       }
     }
 
@@ -1126,6 +1227,66 @@
           ctx.ellipse(p.x, p.y, p.r * 0.62, p.r * 0.2, 0, 0, 7);
           ctx.stroke();
         }
+      } else if (p.type === 'rose') {
+        var oo = Math.max(0.45, Math.min(1, p.base + p.amp * Math.sin(t / 2200 * p.speed + p.phase)));
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        for (var L = 0; L < p.layers; L++) {
+          var lr = p.r * (1 - L * 0.17);
+          var petals = 5 + L;
+          var shade = p.layers > 1 ? L / (p.layers - 1) : 0;
+          var rr = 255;
+          var gg = p.red ? (90 + shade * 70) : (130 + shade * 70);
+          var bb = p.red ? (120 + shade * 62) : (160 + shade * 55);
+          for (var k = 0; k < petals; k++) {
+            var ang = (k / petals) * 6.283 + L * 0.5 + Math.sin(t / 1600 + p.phase + L) * 0.015;
+            ctx.save();
+            ctx.rotate(ang);
+            ctx.fillStyle = 'rgba(' + rr + ',' + gg + ',' + bb + ',' + (0.82 * oo).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.ellipse(0, -lr * 0.62, lr * 0.36, lr * 0.6, 0, 0, 7);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+        ctx.fillStyle = 'rgba(255,236,210,' + oo.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(0, 0, p.r * 0.16, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(245,205,120,' + oo.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(0, 0, p.r * 0.09, 0, 7);
+        ctx.fill();
+        ctx.restore();
+      } else if (p.type === 'rosepetal') {
+        var o = Math.max(0.35, p.base + p.amp * Math.sin(t / 1000 * p.speed + p.phase));
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = 'rgba(' + p.color + ',' + o.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.moveTo(0, -p.r);
+        ctx.quadraticCurveTo(p.r * 0.95, -p.r * 0.1, 0, p.r);
+        ctx.quadraticCurveTo(-p.r * 0.95, -p.r * 0.1, 0, -p.r);
+        ctx.fill();
+        ctx.restore();
+      } else if (p.type === 'leaf') {
+        var ol = Math.max(0.3, p.base + p.amp * Math.sin(t / 1100 * p.speed + p.phase));
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = 'rgba(' + p.g + ',' + (0.72 * ol).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.r, p.r * 0.46, 0, 0, 7);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(-p.r * 0.9, 0);
+        ctx.lineTo(p.r * 0.9, 0);
+        ctx.stroke();
+        ctx.restore();
       }
     }
 
@@ -1310,6 +1471,29 @@
         ctx.beginPath();
         ctx.arc(W * 0.78, H * 0.28, mrx * 0.62, 0, 7);
         ctx.fill();
+      } else if (s.back === 'garden') {
+        var gspots = [
+          [W * 0.18, H * 0.92, Math.min(W, H) * 0.5, s.colors.a],
+          [W * 0.82, H * 0.88, Math.min(W, H) * 0.46, s.colors.b],
+          [W * 0.5, H * 0.99, Math.min(W, H) * 0.55, s.colors.c]
+        ];
+        for (i = 0; i < 3; i++) {
+          var gq = gspots[i];
+          var gsx = gq[0] + Math.sin(t / 30000 + i * 2) * 40;
+          var gsy = gq[1] + Math.cos(t / 36000 + i) * 24;
+          var gg2 = ctx.createRadialGradient(gsx, gsy, 0, gsx, gsy, gq[2]);
+          gg2.addColorStop(0, 'rgba(' + gq[3] + ',0.12)');
+          gg2.addColorStop(1, 'rgba(' + gq[3] + ',0)');
+          ctx.fillStyle = gg2;
+          ctx.beginPath();
+          ctx.arc(gsx, gsy, gq[2], 0, 7);
+          ctx.fill();
+        }
+        var hg2 = ctx.createLinearGradient(0, H, 0, H * 0.78);
+        hg2.addColorStop(0, 'rgba(96,168,118,0.1)');
+        hg2.addColorStop(1, 'rgba(96,168,118,0)');
+        ctx.fillStyle = hg2;
+        ctx.fillRect(0, H * 0.78, W, H * 0.22);
       }
     }
 
